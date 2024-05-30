@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${carData.getModel()}"></title>
+    <link rel="stylesheet" type="text/css" href="/car.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body class="body">
+<div class="car-content-container">
+    <div class="breadcrumb-container padding">
+        <a th:href="@{'/car'}" >
+            <p>Home</p>
+        </a>
+        <p>></p>
+        <p class="hightlight" th:text="${carData.getModel()}"></p>
+    </div>
+
+    <div class="image-container">
+        <img class="preview" th:src="${carData.getImage()}"/>
+        <div class="order">
+            <div class="purchase-header">
+                <h4>Purchase Car:</h4>
+                <h4 class="hightlight" th:text="${carData.getPrice() + '$'}"></h4>
+            </div>
+            <form class="purchase-form">
+                <label>Phone:
+                    <input placeholder="Enter phone"/>
+                </label>
+
+                <label>Full Name:
+                    <input placeholder="Enter full name"/>
+                </label>
+
+                <label>Email:
+                    <input placeholder="Enter email"/>
+                </label>
+
+                <button class="submit-button" type="submit">Order!</button>
+            </form>
+        </div>
+    </div>
+    <h3 class="padding" th:text="${carData.getModel()}"></h3>
+    <p class="car-caption padding">
+        It is a long-established fact that a reader will be distracted
+        by the readable content of a page when looking at its layout.
+        The point of using Lorem Ipsum is that it has a more-or-less
+        normal distribution of letters, as opposed to using content
+        here, content here making it look like readable English but the
+        majority have or randomised words which don't look even slightly
+        believable. Distracted by the readable content of a page when
+        looking at its layout. The point of using Lorem Ipsum is that it
+        has a more-or-less normal distribution of letters, as opposed to
+        using content here have suffered alteration.
+    </p>
+</div>
+<div class="car-sizes-container">
+
+    <div class="car-size-card">
+        <div class="horizontal-size">
+            <div class="size-h-line"></div>
+            <p class="size" th:text="${'Width ' + carData.getCarWidth()}"></p>
+            <div class="size-h-line"></div>
+        </div>
+        <img
+                src="/car-front.png" alt="car-front"
+                width="250px"
+        />
+    </div>
+
+    <div class="car-size-card">
+        <div class="horizontal-size">
+            <div class="size-h-line"></div>
+            <p class="size" th:text="${'Length ' + carData.getCarLength()}"></p>
+            <div class="size-h-line"></div>
+        </div>
+        <div class="vertical-size-container">
+            <img
+                    src="/side-car.png" alt="car-front"
+                    width="400px"
+            />
+
+            <div class="vertical-size">
+                <div class="size-v-line"></div>
+              <div class="container-height">
+                  <p class="size">Height</p>
+                  <p class="size" th:text="${carData.getCarHeight()}"></p>
+              </div>
+                <div class="size-v-line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="features-table">
+    <div class="features-table-header padding">
+        <h4>Key Features Of <h4 class="hightlight" th:text="${carData.getModel()}"></h4></h4>
+    </div>
+    <div class="features-table-row padding">
+        <div class="feature-pcs">
+            <p class="feature-title">Year</p>
+            <p class="feature-value" th:text="${carData.getYear()}"></p>
+        </div>
+
+        <div class="feature-pcs">
+            <p class="feature-title">Color</p>
+            <p class="feature-value" th:text="${carData.getColor()}"></p>
+        </div>
+    </div>
+
+    <div class="features-table-row padding">
+        <div class="feature-pcs">
+            <p class="feature-title">Body Type</p>
+            <p class="feature-value" th:text="${carData.getBodyType()}"></p>
+        </div>
+
+        <div class="feature-pcs">
+            <p class="feature-title">Transmission</p>
+            <p class="feature-value" th:text="${carData.getTransmission()}"></p>
+        </div>
+    </div>
+
+    <div class="features-table-row padding">
+        <div class="feature-pcs">
+            <p class="feature-title">Drive Type</p>
+            <p class="feature-value" th:text="${carData.getDriveType()}"></p>
+        </div>
+
+        <div class="feature-pcs">
+            <p class="feature-title">Doors Number</p>
+            <p class="feature-value" th:text="${carData.getDoorsNumber()}"></p>
+        </div>
+    </div>
+
+    <div class="features-table-row padding">
+        <div class="feature-pcs">
+            <p class="feature-title">Weight</p>
+            <p class="feature-value" th:text="${carData.getWeight()}"></p>
+        </div>
+
+        <div class="feature-pcs">
+            <p class="feature-title">Power</p>
+            <p class="feature-value" th:text="${carData.getPower()}"></p>
+        </div>
+    </div>
+
+    <div class="features-table-row padding">
+        <div class="feature-pcs">
+            <p class="feature-title">Load Capacity</p>
+            <p class="feature-value" th:text="${carData.getLoadCapacity()}"></p>
+        </div>
+
+        <div class="feature-pcs">
+            <p class="feature-title">Trunk Volume</p>
+            <p class="feature-value" th:text="${carData.getTrunkVolume()}"></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
