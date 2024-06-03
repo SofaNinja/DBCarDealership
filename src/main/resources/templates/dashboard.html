@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+<div style="display: flex; flex-direction: row; gap: 8px; align-items: center;">
+    <h3>За останній рік продано на сумму: </h3>
+    <h2 th:text="${lastYear}"></h2>
+</div>
+<canvas id="myChart" style="max-width:500px"></canvas>
+<canvas id="myChart2" style="max-width:500px"></canvas>
+
+<div class="users-container">
+    <div class="users-list-container">
+        <h2>Clients:</h2>
+        <div class="users-list">
+            <div class="user-card" th:each="elem : ${users}">
+                <div class="card-left-container">
+                    <div class="avatar" th:text="${elem.getFullName().substring(0,2).toUpperCase()}"></div>
+                    <div class="card-content">
+                        <h3 th:text="${elem.getFullName()}"></h3>
+                        <p class="user-email" th:text="${elem.getEmail()}"></p>
+                    </div>
+                </div>
+
+                <div class="stat-container">
+                    <div class="item">
+                        <p class="item-title hightlight">Orders</p>
+                        <p class="item-value" th:text="${elem.getOrdersCount()}"></p>
+                    </div>
+                    <div class="item">
+                        <p class="item-title hightlight">Total</p>
+                        <p class="item-value" th:text="${elem.getOrdersTotal()}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="users-list-container">
+        <h2>Managers:</h2>
+        <div class="users-list">
+            <div class="user-card" th:each="elem : ${managers}">
+                <div class="card-left-container">
+                    <div class="avatar" th:text="${elem.getFullName().substring(0,2).toUpperCase()}"></div>
+                    <div class="card-content">
+                        <h3 th:text="${elem.getFullName()}"></h3>
+                        <p class="user-email" th:text="${elem.getEmail()}"></p>
+                    </div>
+                </div>
+                <div class="stat-container">
+                    <div class="item">
+                        <p class="item-title hightlight">Orders</p>
+                        <p class="item-value" th:text="${elem.getOrdersCount()}"></p>
+                    </div>
+                    <div class="item">
+                        <p class="item-title hightlight">Total</p>
+                        <p class="item-value" th:text="${elem.getOrdersTotal()}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        /*<![CDATA[*/
+        let managers = /*[[${managersNames}]]*/ null
+        let managersSales = /*[[${managersSales}]]*/ null
+        let models = /*[[${carsModels}]]*/ null
+        let ordersCounts = /*[[${carsCounts}]]*/ null
+        /*]]>*/
+        console.log({models, ordersCounts})
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: managers,
+                datasets: [
+                    {
+                        label: "Sales",
+                        data: managersSales
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMin: 0
+                    },
+                    x: {
+                        beginAtZero: true,
+                        suggestedMin: 0
+                    }
+                }
+            }
+        });
+
+
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+            type: "bar",
+            data: {
+                labels: models,
+                datasets: [
+                    {
+                        label: "Orders",
+                        data: ordersCounts
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMin: 0
+                    },
+                    x: {
+                        beginAtZero: true,
+                        suggestedMin: 0
+                    }
+                }
+            }
+        });
+    });
+</script>
+</html>

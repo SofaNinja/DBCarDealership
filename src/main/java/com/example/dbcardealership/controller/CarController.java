@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.example.dbcardealership.repository.AdditionalOptionRepository;
 import com.example.dbcardealership.service.CarService;
 
 @Controller
@@ -13,6 +14,7 @@ import com.example.dbcardealership.service.CarService;
 @RequestMapping("/car")
 public class CarController {
     private final CarService carService;
+    private final AdditionalOptionRepository additionalOptionRepository;
 
     @GetMapping
     public String getCarList(Model model) {
@@ -25,14 +27,8 @@ public class CarController {
         System.out.println(car_id);
         var data = carService.getCarById(car_id);
         model.addAttribute("carData", data);
+        model.addAttribute("options", additionalOptionRepository.getOptionList());
+
         return "car";
     }
-
-//    @PostMapping("/car/{carId}/order")
-//    public String getSubmitOrderForm(@PathVariable("order_id") int order_id, Model model) {
-//        System.out.println(order_id);
-//        var data = orderService.getOrderById(order_id);
-//        model.addAttribute("orderData", data);
-//        return "redirect:/order/create";
-//    }
 }

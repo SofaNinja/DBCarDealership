@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" type="text/css" href="/orders.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body class="body">
+<div class="grid-container">
+    <div class="grid-of-cars">
+        <div class="car-card"  th:each="c : ${userOrders}">
+            <img
+                    class="car-image"
+                    th:src="${c.getImage()}"
+            />
+            <div class="car-info-container">
+                <div class="car-info">
+                    <a th:href="@{'/car/'+${c.getCarId()}}"><h3 class="car-title" th:text="${c.getModel()}"></h3></a>
+                    <div class="order-data">
+                        <h3 class="hightlight" th:text="${c.getPrice() + '$'}"></h3>
+                        <h3 th:class="${c.getStatus() == 'Completed' ? 'green' : 'status'}" th:text="${c.getStatus()}"></h3>
+                    </div>
+                </div>
+                <div class="car-features">
+                    <div class="item">
+                        <p class="item-title hightlight">Year</p>
+                        <p class="item-value" th:text="${c.getYear()}"></p>
+                    </div>
+
+                    <div class="item">
+                        <p class="item-title hightlight">Power</p>
+                        <p class="item-value" th:text="${c.getPower()}"></p>
+                    </div>
+
+                    <div class="item">
+                        <p class="item-title hightlight">Color</p>
+                        <p class="item-value" th:text="${c.getColor()}"></p>
+                    </div>
+
+                    <div class="item">
+                        <p class="item-title hightlight">Body Type</p>
+                        <p class="item-value" th:text="${c.getBodyType()}"></p>
+                    </div>
+                </div>
+                <div>
+                    <p>Manager: </p>
+                    <p th:text="${c.getFullName()}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -11,8 +11,8 @@
     <groupId>org.zero</groupId>
     <artifactId>DBCarDealership</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>nikita-dealer-228</name>
-    <description>nikita-dealer-228</description>
+    <name>DBCarDealership</name>
+    <description>DBCarDealership</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -44,6 +44,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>6.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>6.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>6.2.4</version>
         </dependency>
     </dependencies>
 

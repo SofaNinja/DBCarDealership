@@ -9,13 +9,10 @@
 <body class="body">
 <div class="car-content-container">
     <div class="breadcrumb-container padding">
-        <a th:href="@{'/car'}" >
-            <p>Home</p>
-        </a>
+        <a th:href="@{'/car/'+${car_id}}">Home</a>
         <p>></p>
         <p class="hightlight" th:text="${carData.getModel()}"></p>
     </div>
-
     <div class="image-container">
         <img class="preview" th:src="${carData.getImage()}"/>
         <div class="order">
@@ -23,18 +20,12 @@
                 <h4>Purchase Car:</h4>
                 <h4 class="hightlight" th:text="${carData.getPrice() + '$'}"></h4>
             </div>
-            <form class="purchase-form">
-                <label>Phone:
-                    <input placeholder="Enter phone"/>
-                </label>
-
-                <label>Full Name:
-                    <input placeholder="Enter full name"/>
-                </label>
-
-                <label>Email:
-                    <input placeholder="Enter email"/>
-                </label>
+            <form action="/order/new" class="purchase-form" method="post">
+                <input type="hidden" name="carId" th:value="${car_id}">
+                    <div class="option" th:each="c : ${options}">
+                        <input th:id="${'option_' + c.getId()}" name="selectedOptions" th:value="${c.getId()}" type="checkbox"/>
+                        <label th:for="${'option_' + c.getId()}" th:text="${c.getName() + ' ' + c.getPrice()}"></label>
+                    </div>
 
                 <button class="submit-button" type="submit">Order!</button>
             </form>
@@ -82,10 +73,10 @@
 
             <div class="vertical-size">
                 <div class="size-v-line"></div>
-              <div class="container-height">
-                  <p class="size">Height</p>
-                  <p class="size" th:text="${carData.getCarHeight()}"></p>
-              </div>
+                <div class="container-height">
+                    <p class="size">Height</p>
+                    <p class="size" th:text="${carData.getCarHeight()}"></p>
+                </div>
                 <div class="size-v-line"></div>
             </div>
 

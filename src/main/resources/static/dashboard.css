@@ -1,0 +1,83 @@
+.users-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.users-list-container {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*gap: 12px;*/
+    justify-content: space-between;
+    width: 400px;
+}
+
+.card-left-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: aquamarine;
+    border-radius: 200px;
+    font-size: 24px;
+    font-weight: bold;
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user-email {
+    opacity: 60%;
+}
+
+.stat-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    /*margin-left: 32px;*/
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-title {
+    font-size: 12px;
+}
+
+.item-value {
+    opacity: 40%;
+    font-weight: bolder;
+}
+
+.hightlight {
+    color: #ff5401;
+}

@@ -6,7 +6,6 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -34,15 +33,11 @@ public class Order {
     @JoinColumn(name = "additional_option_id", nullable = false)
     private AdditionalOption additionalOption;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_status_id")
+    private OrderStatus orderStatus;
+
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 
-    @Column(name = "create_date")
-    private Date createDate;
-
-    @Column(name = "complete_date")
-    private Date completeDate;
-
-    @Column(name = "order_status")
-    private Boolean orderStatus;
 }

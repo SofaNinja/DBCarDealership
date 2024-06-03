@@ -29,4 +29,14 @@ public class Client {
 
     @Column(name = "mobile_number", nullable = false, length = 20)
     private String mobileNumber;
+
+    @Column(name = "passport_number", nullable = false, length = 20)
+    private String passportNumber;
+
+    @Column(name = "identification_code", nullable = false, length = 20)
+    private String identificationCode;
+
+    @Column(name = "driver_license_number", nullable = false, length = 20)
+    private String driverLicenseNumber;
+
 }

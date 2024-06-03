@@ -27,7 +27,7 @@
 
 label {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .order {
@@ -39,8 +39,15 @@ label {
     /* padding: 16px; */
 }
 
+.option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
 input {
-    appearance: none;
+    /*appearance: none;*/
     outline: 2px solid transparent;
     outline-offset: 2px;
     font-size: 18px;
