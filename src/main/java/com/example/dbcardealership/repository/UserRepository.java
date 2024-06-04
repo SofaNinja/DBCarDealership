@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<Client, Long> {
     @Query(value = """
 
-            select
+select
     C.client_id as id,
     C.full_name as fullName ,
     C.email,

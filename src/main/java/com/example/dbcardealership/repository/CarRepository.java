@@ -1,6 +1,7 @@
 package com.example.dbcardealership.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import com.example.dbcardealership.entity.Car;
 import com.example.dbcardealership.model.CarDTO;
@@ -55,4 +56,48 @@ from cars C
 left join body_types BT on BT.body_type_id = C.body_type_id;
 """, nativeQuery = true)
     List<CarSmallDTO> getAllCars();
+
+    @Modifying
+    @Query(value = """
+insert into cars (
+                  model,
+                  year,
+                  price,
+                  body_type_id,
+                  transmission_type_id,
+                  drive_type_id,
+                  number_of_doors,
+                  capacity,
+                  dimensions,
+                  wheelbase,
+                  max_torque,
+                  engine_volume,
+                  power,
+                  weight,
+                  clearance,
+                  load_capacity,
+                  trunk_volume,
+                  color)
+VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, 200, 4.5, ?11, 3000, 170, 450, 15, ?12)
+""", nativeQuery = true)
+    Integer insertCar(
+            String model,
+            Integer year,
+            Double price,
+            Integer bodyTypeId,
+            Integer transmissionTypeId,
+            Integer driveTypeId,
+            Integer numberOfDoors,
+            Integer capacity,
+            String dimensions,
+            Integer wheelbase,
+            Double power,
+            String color
+    );
+
+    @Modifying
+    @Query(value = """
+insert into car_fuel_types (car_id, fuel_type_id) VALUES (?1, ?2)
+""", nativeQuery = true)
+    void insertFuelTypes(Integer carId, Integer fuelTypeId);
 }

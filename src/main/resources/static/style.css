@@ -26,7 +26,7 @@ body {
 /*gap: 10%;*/
 
 .hightlight {
-    color: #ff5401;
+    color: #ff5401!important;
 }
 
 .padding {
@@ -36,4 +36,17 @@ body {
 
 a {
     text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.menu-option {
+    text-decoration: none;
+    color: black;
 }

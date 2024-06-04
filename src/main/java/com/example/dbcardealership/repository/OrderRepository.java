@@ -87,5 +87,5 @@ limit 3
             order by ordersCount DESC
             limit 3
             """, nativeQuery = true)
-List<CarDashboardDTO> getCarsTop3Rating();
+    List<CarDashboardDTO> getCarsTop3Rating();
 }

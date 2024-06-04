@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.dbcardealership.model.CarDashboardDTO;
 import com.example.dbcardealership.model.ManagerSalesDTO;
+import com.example.dbcardealership.repository.AdditionalOptionRepository;
 import com.example.dbcardealership.repository.OrderRepository;
 import com.example.dbcardealership.repository.UserRepository;
 
@@ -16,6 +17,7 @@ import com.example.dbcardealership.repository.UserRepository;
 public class DashboardController {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
+    private final AdditionalOptionRepository additionalOptionRepository;
 
     @GetMapping
     public String getDashboard(Model model) {
@@ -31,6 +33,11 @@ public class DashboardController {
 
         model.addAttribute("users", userRepository.getClientsList(1));
         model.addAttribute("managers", userRepository.getManagersList(1));
+
+        model.addAttribute("bodyTypeList", additionalOptionRepository.getBodyTypeList());
+        model.addAttribute("transmissionTypeList", additionalOptionRepository.getTransmissionTypeList());
+        model.addAttribute("driveTypeList", additionalOptionRepository.getDriveTypeList());
+        model.addAttribute("fuelTypeList", additionalOptionRepository.getFuelTypeList());
 
         return "dashboard";
     }

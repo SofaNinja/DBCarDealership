@@ -3,9 +3,8 @@ package com.example.dbcardealership.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import com.example.dbcardealership.model.NewCarDTO;
 import com.example.dbcardealership.repository.AdditionalOptionRepository;
 import com.example.dbcardealership.service.CarService;
 
@@ -30,5 +29,29 @@ public class CarController {
         model.addAttribute("options", additionalOptionRepository.getOptionList());
 
         return "car";
+    }
+
+    @PostMapping("/new")
+    public String newCar(@RequestParam String model,
+                         @RequestParam Integer year,
+                         @RequestParam Double price,
+                         @RequestParam String color,
+                         @RequestParam Integer numberOfDoors,
+                         @RequestParam Integer capacity,
+
+                         @RequestParam Integer carWidth,
+                         @RequestParam Integer carLength,
+                         @RequestParam Integer carHeight,
+
+                         @RequestParam Integer wheelbase,
+                         @RequestParam Double power,
+
+                         @RequestParam Integer bodyTypeId,
+                         @RequestParam Integer transmissionTypeId,
+                         @RequestParam Integer[] fuelTypeId,
+                         @RequestParam Integer driveTypeId
+    ) {
+        carService.addNewCar(new NewCarDTO(model, year, price, color, numberOfDoors, capacity, carWidth, carLength, carHeight, wheelbase, power, bodyTypeId, transmissionTypeId, fuelTypeId, driveTypeId));
+        return "redirect:/car";
     }
 }

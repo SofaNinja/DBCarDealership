@@ -35,7 +35,7 @@ public class SecurityConfiguration {
         return  http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/car/**").authenticated()
+                        .requestMatchers("/dashboard/**").authenticated()
                         .requestMatchers("/order/**").authenticated()
                         .anyRequest().permitAll()
                 )

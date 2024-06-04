@@ -6,7 +6,13 @@
     <link rel="stylesheet" type="text/css" href="/home.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body class="body">
+<body>
+<div class="menu">
+    <a class="menu-option hightlight" href="/car">Catalog</a>
+    <a class="menu-option" href="/order">Orders</a>
+    <a class="menu-option" href="/dashboard">Dashboard</a>
+    <a class="menu-option" href="/login">Login</a>
+</div>
 <div class="grid-container">
     <div class="grid-of-cars">
            <div class="car-card"  th:each="c : ${carList}">

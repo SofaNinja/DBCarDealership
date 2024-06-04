@@ -81,3 +81,23 @@
 .hightlight {
     color: #ff5401;
 }
+
+.add-car-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.car-size {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+}
+
+.option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}

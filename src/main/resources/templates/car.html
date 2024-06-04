@@ -7,9 +7,15 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body class="body">
+<div class="menu">
+    <a class="menu-option" href="/car">Catalog</a>
+    <a class="menu-option" href="/order">Orders</a>
+    <a class="menu-option" href="/dashboard">Dashboard</a>
+    <a class="menu-option" href="/login">Login</a>
+</div>
 <div class="car-content-container">
     <div class="breadcrumb-container padding">
-        <a th:href="@{'/car/'+${car_id}}">Home</a>
+        <a th:href="@{'/car'}">Home</a>
         <p>></p>
         <p class="hightlight" th:text="${carData.getModel()}"></p>
     </div>
@@ -33,16 +39,16 @@
     </div>
     <h3 class="padding" th:text="${carData.getModel()}"></h3>
     <p class="car-caption padding">
-        It is a long-established fact that a reader will be distracted
+        It is a long established fact that a reader will be distracted
         by the readable content of a page when looking at its layout.
         The point of using Lorem Ipsum is that it has a more-or-less
         normal distribution of letters, as opposed to using content
-        here, content here making it look like readable English but the
-        majority have or randomised words which don't look even slightly
+        here, content heremaking it look like readable Englishbut the
+        majority haveor randomised words which don't look even slightly
         believable. Distracted by the readable content of a page when
         looking at its layout. The point of using Lorem Ipsum is that it
         has a more-or-less normal distribution of letters, as opposed to
-        using content here have suffered alteration.
+        using content herehave suffered alteration.
     </p>
 </div>
 <div class="car-sizes-container">
@@ -144,6 +150,18 @@
         <div class="feature-pcs">
             <p class="feature-title">Trunk Volume</p>
             <p class="feature-value" th:text="${carData.getTrunkVolume()}"></p>
+        </div>
+    </div>
+
+    <div class="features-table-row padding">
+        <div class="feature-pcs">
+            <p class="feature-title">Fuel Type</p>
+            <p class="feature-value" th:text="${carData.getFuelType()}"></p>
+        </div>
+
+        <div class="feature-pcs">
+            <p class="feature-title">Clearance</p>
+            <p class="feature-value" th:text="${carData.getClearance()}"></p>
         </div>
     </div>
 </div>

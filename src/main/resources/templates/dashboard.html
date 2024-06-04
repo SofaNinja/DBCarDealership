@@ -8,6 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 <body>
+<div class="menu">
+    <a class="menu-option" href="/car">Catalog</a>
+    <a class="menu-option" href="/order">Orders</a>
+    <a class="menu-option hightlight" href="/dashboard">Dashboard</a>
+    <a class="menu-option" href="/login">Login</a>
+</div>
 <div style="display: flex; flex-direction: row; gap: 8px; align-items: center;">
     <h3>За останній рік продано на сумму: </h3>
     <h2 th:text="${lastYear}"></h2>
@@ -67,14 +73,58 @@
         </div>
     </div>
 </div>
+<form action="/car/new" class="add-car-form" method="post">
+    <H2>Додати Автомобіль:</H2>
+    <input placeholder="Модель автомобіля" name="model"/>
+    <input placeholder="Рік виготовлення" name="year" type="number" min="1800" max="2025"/>
+    <input placeholder="Вартість" name="price" type="number" min="0"/>
+    <input placeholder="Колір автомобіля" name="color">
+    <input placeholder="Кількість дверей" name="numberOfDoors" min="0" max="12">
+    <input placeholder="Місткість людей" min="0" name="capacity"/>
+
+    <div class="car-size">
+        <input placeholder="Довжина" name="carLength" min="0">
+        <p>mm x </p>
+        <input placeholder="Ширина" name="carWidth" min="0">
+        <p>mm x </p>
+        <input placeholder="Висота" name="carHeight" min="0">
+        <p>mm</p>
+    </div>
+
+    <input placeholder="Wheelbase" min="0" name="wheelbase"/>
+    <input placeholder="Потужність" min="0" name="power"/>
+
+    <select name="bodyTypeId">
+        <option th:each="elem : ${bodyTypeList}" th:value="${elem.getId()}" th:text="${elem.getTitle()}"></option>
+    </select>
+
+    <select name="transmissionTypeId">
+        <option th:each="elem : ${transmissionTypeList}" th:value="${elem.getId()}" th:text="${elem.getTitle()}"></option>
+    </select>
+
+    <select name="driveTypeId">
+        <option th:each="elem : ${driveTypeList}" th:value="${elem.getId()}" th:text="${elem.getTitle()}"></option>
+    </select>
+
+    <div class="option" th:each="c : ${fuelTypeList}">
+        <input th:id="${'option_' + c.getId()}" name="fuelTypeId" th:value="${c.getId()}" type="checkbox"/>
+        <label th:for="${'option_' + c.getId()}" th:text="${c.getTitle()}"></label>
+    </div>
+
+
+
+    <button type="submit">Add car</button>
+</form>
 </body>
 <script th:inline="javascript">
     document.addEventListener('DOMContentLoaded', function () {
         /*<![CDATA[*/
         let managers = /*[[${managersNames}]]*/ null
-        let managersSales = /*[[${managersSales}]]*/ null
+        let managersSales = /*[[${managersSales}]]*/ []
+        managersSales.push(0)
         let models = /*[[${carsModels}]]*/ null
-        let ordersCounts = /*[[${carsCounts}]]*/ null
+        let ordersCounts = /*[[${carsCounts}]]*/ []
+        ordersCounts.push(0)
         /*]]>*/
         console.log({models, ordersCounts})
 

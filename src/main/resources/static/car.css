@@ -5,10 +5,8 @@
 }
 
 .preview {
-    max-width: 70%;
-    min-width: 70%;
     background-size: cover;
-    max-height: 470px;
+    width: 40%;
 }
 
 .image-container {
