@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title th:text="${carList}"></title>
@@ -7,45 +7,45 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-<div class="menu">
-    <a class="menu-option hightlight" href="/car">Catalog</a>
+<nav class="menu">
+    <a class="menu-option" href="/main">Home</a>
+    <a class="menu-option" href="/car">Catalog</a>
     <a class="menu-option" href="/order">Orders</a>
     <a class="menu-option" href="/dashboard">Dashboard</a>
+    <a class="menu-option" href="/feedback">Feedback</a>
     <a class="menu-option" href="/login">Login</a>
-</div>
+</nav>
 <div class="grid-container">
     <div class="grid-of-cars">
-           <div class="car-card"  th:each="c : ${carList}">
-               <img
-                       class="car-image"
-                       th:src="${c.getImage()}"
-               />
-               <div class="car-info">
-                   <a th:href="@{'/car/'+${c.getId()}}"><h3 class="car-title" th:text="${c.getModel()}"></h3></a>
-                   <h3 class="hightlight" th:text="${c.getPrice() + '$'}"></h3>
-               </div>
-               <div class="car-features">
-                   <div class="item">
-                       <p class="item-title hightlight">Year</p>
-                       <p class="item-value" th:text="${c.getYear()}"></p>
-                   </div>
-
-                   <div class="item">
-                       <p class="item-title hightlight">Power</p>
-                       <p class="item-value" th:text="${c.getPower()}"></p>
-                   </div>
-
-                   <div class="item">
-                       <p class="item-title hightlight">Color</p>
-                       <p class="item-value" th:text="${c.getColor()}"></p>
-                   </div>
-
-                   <div class="item">
-                       <p class="item-title hightlight">Body Type</p>
-                       <p class="item-value" th:text="${c.getBodyType()}"></p>
-                   </div>
-               </div>
-           </div>
+        <div class="car-card" th:each="c : ${carList}">
+            <img
+                    class="car-image"
+                    th:src="${c.getImage()}"
+                    th:alt="${'Image of ' + c.getModel()}"
+            >
+            <div class="car-info">
+                <a th:href="@{'/car/'+${c.getId()}}"><h3 class="car-title" th:text="${c.getModel()}"></h3></a>
+                <h3 class="hightlight" th:text="${c.getPrice() + '$'}"></h3>
+            </div>
+            <div class="car-features">
+                <div class="item">
+                    <p class="item-title hightlight">Year</p>
+                    <p class="item-value" th:text="${c.getYear()}"></p>
+                </div>
+                <div class="item">
+                    <p class="item-title hightlight">Power</p>
+                    <p class="item-value" th:text="${c.getPower()}"></p>
+                </div>
+                <div class="item">
+                    <p class="item-title hightlight">Color</p>
+                    <p class="item-value" th:text="${c.getColor()}"></p>
+                </div>
+                <div class="item">
+                    <p class="item-title hightlight">Body Type</p>
+                    <p class="item-value" th:text="${c.getBodyType()}"></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
